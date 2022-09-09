@@ -1,0 +1,258 @@
+<MainScreen>:
+
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'background.jpg'
+            Rectangle:
+                pos: 450, 900
+                size: 700, 175
+                source: 'logo.png'
+
+
+    MDScreen:
+        MDBoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                text: ""
+
+    MDLabel:
+        id: chosen
+        text: ''
+        text_color: 0, 0, 0, 0
+        halign: 'center'
+        font_style: 'H6'
+        font_name: 'Antonio'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+
+    MDLabel:
+        id: choose
+        text: 'Choose your first age limit.'
+        text_color: 0, 0, 0, 0
+        halign: 'center'
+        font_style: 'H6'
+        font_name: 'Antonio'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.65}
+
+    MDFillRoundFlatButton:
+        size_hint: 0.3, 0.2
+        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        on_press:
+            app.openCamera()
+
+    MDIcon:
+        id: camera_icon
+        halign: 'center'
+        icon: 'camera-outline'
+        font_size: '80sp'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        opacity: 1
+
+    MDFillRoundFlatButton:
+        id: age_limit_16
+        text: '16+'
+        font_size: '35sp'
+        font_name: 'Antonio'
+        size_hint: 0.1, 0.1
+        pos_hint: {'center_x': 0.435, 'center_y': 0.5}
+        on_press:
+            app.setAge(16)
+
+    MDFillRoundFlatButton:
+        id: age_limit_18
+        text: '18+'
+        font_size: '35sp'
+        font_name: 'Antonio'
+        size_hint: 0.1, 0.1
+        pos_hint: {'center_x': 0.565, 'center_y': 0.5}
+        on_press:
+            app.setAge(18)
+
+    MDTextField:
+        id: age_limit_custom_text
+        hint_text: 'custom age limit'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.38}
+        size_hint_x: None
+        font_name: 'Antonio'
+        width: 350
+        icon_right: 'pencil'
+
+    MDFillRoundFlatButton:
+        id: age_limit_custom_btn
+        text: 'add custom'
+        font_name: 'Antonio'
+        pos_hint: {'center_x': 0.45, 'center_y': 0.3}
+        on_press:
+            app.setAge("c")
+
+    MDFillRoundFlatButton:
+        id: age_limit_remove
+        text: ''
+        size_hint: 0.05, 0.05
+        pos_hint: {'center_x': 0.575, 'center_y': 0.3}
+        on_press:
+            app.setAge("dc")
+
+    MDIcon:
+        id: trash-can
+        halign: 'center'
+        icon: 'trash-can'
+        font_size: '30sp'
+        pos_hint: {'center_x': 0.575, 'center_y': 0.3}
+        opacity: 1
+
+
+<CameraScreen>:
+
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'background.jpg'
+
+    MDScreen:
+        MDBoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                text: ""
+
+    Camera:
+        id: camera
+        index: 1
+        resolution: (1280, 960)
+        play: True
+
+    MDFillRoundFlatButton:
+        id: camera_click
+        size_hint: 0.1, 0.2
+        height: '48dp'
+        pos_hint: {'center_x': 0.95, 'center_y': 0.5}
+        on_press:
+            app.capture()
+
+    MDIcon:
+        id: camera_icon
+        halign: 'center'
+        icon: 'camera-outline'
+        font_size: '80sp'
+        pos_hint: {'center_x': 0.95, 'center_y': 0.5}
+        opacity: 1
+
+    MDFillRoundFlatButton:
+        size_hint: 0.1, 0.1
+        pos_hint: {'center_x': 0.95, 'center_y': 0.25}
+        on_press:
+            app.openMain()
+
+    MDIcon:
+        id: back_icon
+        halign: 'center'
+        icon: 'arrow-left-bold'
+        font_size: '60sp'
+        pos_hint: {'center_x': 0.95, 'center_y': 0.25}
+        opacity: 1
+
+    MDFillRoundFlatButton:
+        size_hint: 0.1, 0.1
+        pos_hint: {'center_x': 0.95, 'center_y': 0.75}
+        on_press:
+            app.openUpload()
+
+    MDIcon:
+        id: upload_icon
+        halign: 'center'
+        icon: 'upload'
+        font_size: '60sp'
+        pos_hint: {'center_x': 0.95, 'center_y': 0.75}
+        opacity: 1
+
+    MDRaisedButton:
+        text: ''
+        id: half_leftside
+        font_size:'65sp'
+        size_hint: 0.4, 0.6
+        pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+        on_press:
+            app.openCamera()
+        opacity: 0
+        disabled: True
+        md_bg_color: [0, 0, 0, 0]
+
+    MDRaisedButton:
+        text: ''
+        id: half_rightside
+        font_size:'65sp'
+        size_hint: 0.4, 0.6
+        pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+        on_press:
+            app.openCamera()
+        opacity: 0
+        disabled: True
+        md_bg_color: [0, 0, 0, 0]
+
+    MDRaisedButton:
+        text: ''
+        id: whole
+        font_size:'65sp'
+        size_hint: 0.8, 0.6
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        on_press:
+            app.openCamera()
+        opacity: 0
+        disabled: True
+        md_bg_color: [0, 0, 0, 0]
+
+<UploadScreen>
+    id: my_files
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        padding: 50
+        spacing: 20
+
+        Image:
+            id: my_image
+            source: ''
+
+        FileChooserIconView:
+            id: filechooser
+            on_selection: app.selected(filechooser.selection)
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1
+                Rectangle:
+                    size: self.size
+
+    MDFillRoundFlatButton:
+        size_hint: 0.1, 0.1
+        pos_hint: {'center_x': 0.95, 'center_y': 0.75}
+        on_press:
+            app.confirmUpload()
+
+    MDIcon:
+        id: upload_icon
+        halign: 'center'
+        icon: 'check-circle-outline'
+        font_size: '60sp'
+        pos_hint: {'center_x': 0.95, 'center_y': 0.75}
+        opacity: 1
+
+    MDFillRoundFlatButton:
+        size_hint: 0.1, 0.1
+        pos_hint: {'center_x': 0.05, 'center_y': 0.75}
+        on_press:
+            app.openCamera()
+
+    MDIcon:
+        id: upload_icon
+        halign: 'center'
+        icon: 'arrow-left-bold'
+        font_size: '60sp'
+        pos_hint: {'center_x': 0.05, 'center_y': 0.75}
+        opacity: 1
